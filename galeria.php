@@ -1,5 +1,15 @@
 <?php include "cabecalho.php"?>
+
 <?php
+include_once "conexao.php";
+
+
+$sql = "SELECT * FROM filmes";
+    $resultbd = $conn->query($sql);
+
+    // while ($filme = $resultbd = $rs->FetchArray()){
+    //     print_r($filme);
+    // }
 
 $filme1 = ["titulo" =>"Vingadores: Ultimato",
           "nota" => 8.6,
