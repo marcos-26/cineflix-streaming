@@ -5,11 +5,12 @@ include_once "conexao.php";
 
 
 $sql = "SELECT * FROM filmes";
-    $resultbd = $conn->query($sql);
+    $filmes = $conn->prepare($sql);
+    $filmes->execute();
 
-    // while ($filme = $resultbd = $rs->FetchArray()){
-    //     print_r($filme);
-    // }
+
+    // while ($filme = $resultset = $rs->FetchArray()){
+
 
 $filme1 = ["titulo" =>"Vingadores: Ultimato",
           "nota" => 8.6,
@@ -23,7 +24,7 @@ $filme2 = ["titulo" =>"Sonic",
           "poster" => "https://www.themoviedb.org/t/p/original/f4SvCKIUrC2cDR7Xo4k1kaGAqQ2.jpg"
         ];
 
-$filmes = [$filme1, $filme2];
+// $filmes = [$filme1, $filme2];
 
 ?>
 
@@ -51,7 +52,7 @@ $filmes = [$filme1, $filme2];
   </nav>
         <!-- CARDS AUTOMATICO, COM LUPE DE REPETIÇÃO-->
   <div class="row">
-    <?php foreach ($filmes as $filme) : ?>
+    <?php while ($filme = $filmes->fetch(PDO::FETCH_ASSOC)) : ?>
     <div class="col s3">
       <div class="card hoverable">
         <div class="card-image">
@@ -65,7 +66,7 @@ $filmes = [$filme1, $filme2];
         </div>
       </div>
     </div>
-    <?php endforeach ?>
+    <?php endwhile ?>
 
         <!-- CARD MANUAL -->
     <!-- <div class="col s3">
