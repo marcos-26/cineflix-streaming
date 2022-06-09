@@ -1,28 +1,28 @@
-<?php include "cabecalho.php"?>
+<?php include "cabecalho.php" ?>
 
 <?php
 include_once "conexao.php";
 
 
 $sql = "SELECT * FROM filmes";
-    $filmes = $conn->prepare($sql);
-    $filmes->execute();
+$filmes = $conn->prepare($sql);
+$filmes->execute();
 
 
-    // while ($filme = $resultset = $rs->FetchArray()){
 
+// Colocado manualmente
 
-$filme1 = ["titulo" =>"Vingadores: Ultimato",
-          "nota" => 8.6,
-          "sinopse" => "I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.",
-          "poster" => "https://www.themoviedb.org/t/p/original/q6725aR8Zs4IwGMXzZT8aC8lh41.jpg"
-        ];
+// $filme1 = ["titulo" =>"Vingadores: Ultimato",
+//           "nota" => 8.6,
+//           "sinopse" => "I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.",
+//           "poster" => "https://www.themoviedb.org/t/p/original/q6725aR8Zs4IwGMXzZT8aC8lh41.jpg"
+//         ];
 
-$filme2 = ["titulo" =>"Sonic",
-          "nota" => 9,7,
-          "sinopse" => "Dr. Robotnik volta, desta vez com um novo parceiro, Knuckles, em busca de uma esmeralda que tem o poder de construir e destruir civilizações.",
-          "poster" => "https://www.themoviedb.org/t/p/original/f4SvCKIUrC2cDR7Xo4k1kaGAqQ2.jpg"
-        ];
+// $filme2 = ["titulo" =>"Sonic",
+//           "nota" => 9,7,
+//           "sinopse" => "Dr. Robotnik volta, desta vez com um novo parceiro, Knuckles, em busca de uma esmeralda que tem o poder de construir e destruir civilizações.",
+//           "poster" => "https://www.themoviedb.org/t/p/original/f4SvCKIUrC2cDR7Xo4k1kaGAqQ2.jpg"
+//         ];
 
 // $filmes = [$filme1, $filme2];
 
@@ -50,35 +50,38 @@ $filme2 = ["titulo" =>"Sonic",
       </ul>
     </div>
   </nav>
-        <!-- CARDS AUTOMATICO, COM LUPE DE REPETIÇÃO-->
-  <div class="row">
-    <?php while ($filme = $filmes->fetch(PDO::FETCH_ASSOC)) : ?>
-    <div class="col s3">
-      <div class="card hoverable">
-        <div class="card-image">
-          <img src="<?php echo $filme["poster"];?>">
-          <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">favorite_border</i></a>
+  <!-- CARDS AUTOMATICO, COM LUPE DE REPETIÇÃO-->
+  <div class="container">
+    <div class="row">
+      <?php while ($filme = $filmes->fetch(PDO::FETCH_ASSOC)) : ?>
+        <div class="col s12 m6 l3">
+          <div class="card hoverable">
+            <div class="card-image">
+              <img src="<?php echo $filme["poster"]; ?>">
+              <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">favorite_border</i></a>
+            </div>
+            <div class="card-content">
+              <p class="valign-wrapper"><i class="material-icons amber-text">star</i><?php echo $filme["nota"]; ?></p>
+              <span class="card-title"><?php echo $filme["titulo"]; ?></span>
+              <p><?php echo $filme["sinopse"]; ?></p>
+            </div>
+          </div>
         </div>
-        <div class="card-content">
-          <p class="valign-wrapper"><i class="material-icons amber-text">star</i><?php echo $filme["nota"];?></p>
-          <span class="card-title"><?php echo $filme["titulo"];?></span>
-          <p><?php echo $filme["sinopse"];?></p>
-        </div>
-      </div>
+      <?php endwhile ?>
     </div>
-    <?php endwhile ?>
+  </div>
 
-        <!-- CARD MANUAL -->
-    <!-- <div class="col s3">
+  <!-- CARD MANUAL -->
+  <!-- <div class="col s3">
       <div class="card hoverable">
         <div class="card-image">
-          <img src="<?php echo $filme2["poster"];?>">
+          <img src="<?php echo $filme2["poster"]; ?>">
           <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">favorite_border</i></a>
         </div>
         <div class="card-content">
-          <p class="valign-wrapper"><i class="material-icons amber-text">star</i><?php echo $filme2["nota"];?></p>
-          <span class="card-title"><?php echo $filme2["titulo"];?></span>
-          <p><?php echo $filme2["sinopse"];?></p>
+          <p class="valign-wrapper"><i class="material-icons amber-text">star</i><?php echo $filme2["nota"]; ?></p>
+          <span class="card-title"><?php echo $filme2["titulo"]; ?></span>
+          <p><?php echo $filme2["sinopse"]; ?></p>
         </div>
       </div>
     </div> -->

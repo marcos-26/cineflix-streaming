@@ -20,7 +20,8 @@
     </div>
   </nav>
 
-  <div class="row">
+<div class="row">
+  <form action="inserirFilme.php" method="POST">
     <div class="col s6 offset-s3">
       <div class="card">
         <div class="card-content">
@@ -29,17 +30,16 @@
           <!-- input do titulo do filme -->
           <div class="row">
             <div class="input-field col s12">
-              <input id="titulo" type="text" class="validate" require>
+              <input id="titulo" type="text" class="validate" name="titulo" require>
               <label for="titulo">Título do Filme</label>
             </div>
           </div>
 
           <!-- input da Sinopse -->
           <div class="row">
-            <form class="col s12">
               <div class="row">
                 <div class="input-field col s12">
-                  <textarea id="sinopse" class="materialize-textarea"></textarea>
+                  <textarea name="sinopse" id="sinopse" class="materialize-textarea"></textarea>
                   <label for="sinopse">Sinopse</label>
                 </div>
               </div>
@@ -49,7 +49,7 @@
           <!-- input da nota -->
           <div class="row">
             <div class="input-field col s4">
-              <input id="nota" type="number" step=".1" min=0 max=10 class="validate" require>
+              <input id="nota" name="nota" type="number" step=".1" min=0 max=10 class="validate" require>
               <label for="nota">Nota</label>
             </div>
           </div>
@@ -60,7 +60,7 @@
               <input type="file">
             </div>
             <div class="file-path-wrapper">
-              <input class="file-path validate" type="text">
+              <input class="file-path validate" type="text" name="poster">
             </div>
           </div>
 
@@ -70,12 +70,12 @@
 
         <div class="card-action">
           <a class="waves-effect waves-ligth btn grey" href="galeria.php">Cancelar</a>
-          <a href="#" class="waves-effect waves-ligth btn purple">Cadastrar</a>
+          <button type="submit" class="waves-effect waves-ligth btn purple">Cadastrar</button>
         </div>
       </div>
     </div>
+  </form>
   </div>
-
 </body>
 
 </html>
